@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Tic-Tac-Toe</h1>
+            <div id="user-info" class="hidden">
+                <span>Logged in as: <strong id="username-display"></strong></span>
+                <button id="logout-btn" class="btn-small">Logout</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- Auth Section -->
+            <section id="auth-section">
+                <div class="card">
+                    <h2>Welcome</h2>
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="login-tab">Login</button>
+                        <button class="tab-btn" data-tab="signup-tab">Sign Up</button>
+                    </div>
+                    <div id="login-tab" class="tab-content">
+                        <input type="text" id="login-user" placeholder="Login">
+                        <input type="password" id="login-pass" placeholder="Password">
+                        <button id="login-btn" class="btn-primary">Login</button>
+                    </div>
+                    <div id="signup-tab" class="tab-content hidden">
+                        <input type="text" id="signup-user" placeholder="Login">
+                        <input type="password" id="signup-pass" placeholder="Password">
+                        <button id="signup-btn" class="btn-primary">Register</button>
+                    </div>
+                    <p id="auth-message" class="message"></p>
+                </div>
+            </section>
+
+            <!-- Lobby Section -->
+            <section id="lobby-section" class="hidden">
+                <div class="grid-layout">
+                    <div class="card">
+                        <h2>New Game</h2>
+                        <div class="btn-group">
+                            <button id="create-pve" class="btn-secondary">Play vs Computer</button>
+                            <button id="create-pvp" class="btn-secondary">Create P2P Game</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h2>Join Game</h2>
+                        <div id="games-list-container">
+                            <ul id="games-list"></ul>
+                            <button id="refresh-games" class="btn-small">Refresh List</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Game Section -->
+            <section id="game-section" class="hidden">
+                <div class="game-container">
+                    <div class="game-info">
+                        <div class="player-info">
+                            <div class="player">Player X: <span id="player-x-name">-</span> <span class="score-pill"
+                                    id="score-x">0</span></div>
+                            <div class="player">Player O: <span id="player-o-name">-</span> <span class="score-pill"
+                                    id="score-o">0</span></div>
+                        </div>
+                        <div id="game-status-badge" class="status-badge">Waiting...</div>
+                    </div>
+
+                    <div id="board" class="board">
+                        <div class="cell" data-pos="1"></div>
+                        <div class="cell" data-pos="2"></div>
+                        <div class="cell" data-pos="3"></div>
+                        <div class="cell" data-pos="4"></div>
+                        <div class="cell" data-pos="5"></div>
+                        <div class="cell" data-pos="6"></div>
+                        <div class="cell" data-pos="7"></div>
+                        <div class="cell" data-pos="8"></div>
+                        <div class="cell" data-pos="9"></div>
+                    </div>
+
+                    <div class="game-controls">
+                        <button id="play-again" class="btn-primary hidden">Play Again</button>
+                        <button id="back-to-lobby" class="btn-outline">Back to Lobby</button>
+                        <p id="game-message" class="message"></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/js/game.js"></script>
+</body>
+
+</html>
