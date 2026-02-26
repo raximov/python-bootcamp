@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Pro | Premium Project</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Auth Section -->
+        <div id="auth-section" class="auth-container glass-card animate-fade">
+            <h1 id="auth-title">Xush kelibsiz!</h1>
+            <p id="auth-subtitle" style="color: var(--text-muted); margin-bottom: 2rem;">Tizimga kiring yoki ro'yxatdan o'ting</p>
+            
+            <div id="login-form">
+                <div class="input-group">
+                    <label>Login</label>
+                    <input type="text" id="login-input" placeholder="player1">
+                </div>
+                <div class="input-group">
+                    <label>Parol</label>
+                    <input type="password" id="password-input" placeholder="••••••••">
+                </div>
+                <button class="btn btn-primary" onclick="app.handleAuth()">Kirish</button>
+                <button class="btn btn-secondary" onclick="app.toggleAuthMode()">Ro'yxatdan o'tish</button>
+            </div>
+
+            <div id="signup-form" class="hidden">
+                <div class="input-group">
+                    <label>Yangi Login</label>
+                    <input type="text" id="signup-login" placeholder="newplayer">
+                </div>
+                <div class="input-group">
+                    <label>Parol</label>
+                    <input type="password" id="signup-password" placeholder="••••••••">
+                </div>
+                <button class="btn btn-primary" onclick="app.handleAuth(true)">Ro'yxatdan o'tish</button>
+                <button class="btn btn-secondary" onclick="app.toggleAuthMode()">Login sahifasi</button>
+            </div>
+            
+            <p id="auth-error" class="error hidden" style="margin-top: 1rem; color: var(--error); font-size: 0.875rem;"></p>
+        </div>
+
+        <!-- App Section -->
+        <div id="app-section" class="hidden animate-fade">
+            <nav class="navbar">
+                <h3>Tic-Tac-Toe Pro</h3>
+                <div class="user-badge">
+                    <span id="username-display">User</span>
+                    <div class="avatar" id="user-avatar">?</div>
+                    <button class="btn" style="width: auto; padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="app.logout()">Chiqish</button>
+                </div>
+            </nav>
+
+            <div id="dashboard" class="glass-card">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 2rem;">
+                    <h2>O'yinlar</h2>
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="btn btn-primary" style="width: auto;" onclick="app.createGame('computer')">🤖 Bot bilan</button>
+                        <button class="btn btn-secondary" style="width: auto; margin-top: 0;" onclick="app.createGame('user')">👥 Do'st bilan</button>
+                    </div>
+                </div>
+
+                <div id="active-games-section">
+                    <h4 style="color: var(--text-muted); margin-bottom: 1rem;">Ochiq o'yinlar</h4>
+                    <div id="waiting-games-list">
+                        <!-- Games will be injected here -->
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Hozircha ochiq o'yinlar yo'q...</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; margin-top: 3rem;">
+                    <div>
+                        <h3>Leaderboard Top 5</h3>
+                        <div id="leaderboard-list" class="list-container">
+                            <!-- Leaderboard records -->
+                        </div>
+                    </div>
+                    <div>
+                        <h3>So'nggi o'yinlaringiz</h3>
+                        <div id="history-list" class="list-container">
+                            <!-- History records -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game View -->
+            <div id="game-view" class="glass-card hidden animate-fade" style="text-align: center;">
+                <button class="btn btn-secondary" style="width: auto; margin-bottom: 2rem;" onclick="app.showDashboard()">⬅️ Dashboardga qaytish</button>
+                
+                <h2 id="game-status-text">O'yin boshlandi</h2>
+                <p id="game-info" style="color: var(--text-muted);"></p>
+
+                <div class="board" id="game-board">
+                    <div class="cell" onclick="app.makeMove(1)"></div>
+                    <div class="cell" onclick="app.makeMove(2)"></div>
+                    <div class="cell" onclick="app.makeMove(3)"></div>
+                    <div class="cell" onclick="app.makeMove(4)"></div>
+                    <div class="cell" onclick="app.makeMove(5)"></div>
+                    <div class="cell" onclick="app.makeMove(6)"></div>
+                    <div class="cell" onclick="app.makeMove(7)"></div>
+                    <div class="cell" onclick="app.makeMove(8)"></div>
+                    <div class="cell" onclick="app.makeMove(9)"></div>
+                </div>
+                
+                <div id="game-results" class="hidden">
+                    <h1 id="winner-announcement">TABRIKLAYMIZ!</h1>
+                    <button class="btn btn-primary" style="width: 200px; margin: auto;" onclick="app.showDashboard()">Yopish</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
